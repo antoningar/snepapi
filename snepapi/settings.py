@@ -124,3 +124,8 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Custom constant
+# Upload csv link
+PAGE_LINK = 'https://snepmusique.com/les-certifications/?order=Date%20de%20constat%20plus%20r%C3%A9cente'
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000

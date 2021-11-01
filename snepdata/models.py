@@ -2,23 +2,27 @@ from django.db import models
 
 # Create your models here.
 
-class Certification(models.Model):
-    CERTIFICATION_TYPES = (
-        ('O', 'OR'),
-        ('P', 'PLATINE'),
-        ('DP', 'DOUBLE PLATINE'),
-        ('TP', 'TRIPLE PLATINE'),
-        ('D', 'DIAMANT'),
-        ('DD', 'DOUBLE DIAMANT'),
-        ('TD', 'TRIPLE DIAMANT'),
-        ('QD', 'QUADRUPLE DIAMANT'),
-    )
+CERTIFICATION_TYPES = (
+    ('OR', 'OR'),
+    ('PLATINE', 'PLATINE'),
+    ('DOUBLE PLATINE', 'DOUBLE PLATINE'),
+    ('TRIPLE PLATINE', 'TRIPLE PLATINE'),
+    ('DIAMANT', 'DIAMANT'),
+    ('DOUBLE DIAMANT', 'DOUBLE DIAMANT'),
+    ('TRIPLE DIAMANT', 'TRIPLE DIAMANT'),
+    ('QUADRUPLE DIAMANT', 'QUADRUPLE DIAMANT'),
+)
 
+class Certification(models.Model):
+    id = models.BigAutoField(primary_key=True)
     artist = models.CharField(max_length=150)
-    title = models.CharField(max_length=150)
-    label = models.CharField(max_length=150)
-    release_date = models.DateField()
+    title = models.CharField(max_length=150, null=True, blank=True)
+    label = models.CharField(max_length=150,null=True, blank=True)
+    release_date = models.DateTimeField(null=True, blank=True)
 
     category = models.CharField(max_length=50)
-    certification_type = models.CharField(max_length=2, choices=CERTIFICATION_TYPES)
-    certificaion_date = models.DateField()
+    certification_type = models.CharField(max_length=20, choices=CERTIFICATION_TYPES)
+    certification_date = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return f'{self.artist} | {self.title} | {self.certification_type} | {self.certification_date}'
