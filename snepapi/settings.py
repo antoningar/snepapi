@@ -129,3 +129,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Upload csv link
 PAGE_LINK = 'https://snepmusique.com/les-certifications/?order=Date%20de%20constat%20plus%20r%C3%A9cente'
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
+
+TEST = {
+    'CSV_PATH' : 'https://snepmusique.com/wp-content/uploads/2021/11/certif-.csv'
+}
