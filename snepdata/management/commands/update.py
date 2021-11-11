@@ -15,13 +15,19 @@ def str_to_datetimedate(str_date):
 def get_csv_path():
     link = settings.PAGE_LINK
     r = requests.get(link)
+    if r.status_code != 200:
+        raise ValueError
     soup = BeautifulSoup(r.text, 'html.parser')
     a = soup.find("a", {"class": "btn_red btn_print icon-download"})
+    if not a:
+        raise ValueError
     return a['href']
 
 def get_csv():
     path = get_csv_path()
     r_csv = requests.get(path)
+    if r_csv.status_code != 200:
+        raise ValueError
     return r_csv.content.decode('utf-8')
 
 def insert_certification(tmp_cert):
