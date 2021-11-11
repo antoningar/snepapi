@@ -1,7 +1,6 @@
 from django.test import TestCase
 from unittest import mock
 from datetime import date
-from functools import wraps
 
 from django.conf import settings
 import snepdata.management.commands.update as update
@@ -16,7 +15,6 @@ def get_csv():
 def get_html():
     with open('snepdata/test/resources/page.html', 'r') as page:
         return page.read()
-
 
 class MockCertification:
     def __init__(self, certification_type, certification_date):
@@ -110,3 +108,6 @@ class UpdateTest(TestCase):
 
         assert mock_get_certification.called
         self.assertTrue(mock_certif_or.save_has_been_called)
+
+
+
