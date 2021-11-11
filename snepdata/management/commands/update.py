@@ -7,17 +7,6 @@ from django.utils.timezone import make_aware
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
-'''
-from django.db.models.signals import post_save
-
-def post_test(sender, instance, *args, **kwargs):
-    global CPT_ERRORS
-    if kwargs['created'] is False:
-        CPT_ERRORS += 1
-
-post_save.connect(post_test, sender=Certification)
-'''
-
 def str_to_datetimedate(str_date):
     if str_date == '':
         return
@@ -35,6 +24,17 @@ def get_csv():
     r_csv = requests.get(path)
     return r_csv.content.decode('utf-8')
 
+def insert_certification(tmp_cert):
+    try:
+        current_cert = Certification.objects.get(artist=tmp_cert.artist, title=tmp_cert.title)
+        if current_cert.certification_type != tmp_cert.certification_type and\
+            tmp_cert.certification_date > current_cert.certification_date:
+
+            current_cert.certification_type = tmp_cert.certification_type
+            current_cert.save()
+    except Certification.DoesNotExist:
+        tmp_cert.save()
+
 def line_to_certification(line):
     item = line.split(';')
     return Certification(
@@ -46,17 +46,6 @@ def line_to_certification(line):
         certification_type=item[4].upper(),
         certification_date=str_to_datetimedate(item[6]),
     )
-
-def insert_certification(tmp_cert):
-    try:
-        current_cert = Certification.objects.get(artist=tmp_cert.artist, title=tmp_cert.title)
-        if current_cert.certification_type != tmp_cert.certification_type and\
-            tmp_cert.certification_date > current_cert.certification_date:
-
-            current_cert.certification_type = tmp_cert.certification_type
-            current_cert.save()
-    except Certification.DoesNotExist:
-        tmp_cert.save()
 
 def insert_csv(csv_content):
     csv_lines = csv_content.replace('\t','').split('\n')
