@@ -1,0 +1,14 @@
+jobtest:
+  stage: test
+  before_script:
+    - sudo apt -y update
+    - sudo apt -y install apt-utils
+    - sudo apt -y install net-tools python3.8 python3-pip mysql-client libmysqlclient-dev
+    - sudo apt -y upgrade
+    - /home/ubuntu/snepapi/init.sh
+
+  script:
+    - /home/ubuntu/snepapi/builds/0/project-0/venv/bin/python manage.py makemigrations
+    - /home/ubuntu/snepapi/builds/0/project-0/venv/bin/python manage.py migrate
+    - /home/ubuntu/snepapi/builds/0/project-0/venv/bin/python manage.py check
+    - /home/ubuntu/snepapi/builds/0/project-0/venv/bin/python manage.py test --pattern="*_test.py"
