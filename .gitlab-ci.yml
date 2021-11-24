@@ -8,8 +8,8 @@ jobtest:
     - ./init.sh
 
   script:
-    - pwd
-    - ls -al
+    - source python
+    - pyhton --version
     - python manage.py makemigrations
     - python manage.py migrate
     - python manage.py check
