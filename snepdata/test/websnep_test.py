@@ -44,4 +44,3 @@ class WebSnepTestCase(TestCase):
 
         with self.assertRaises(ValueError):
             update.get_csv()
-

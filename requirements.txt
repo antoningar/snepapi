@@ -2,3 +2,6 @@ Django
 requests
 beautifulsoup4
 mock
+djangorestframework
+markdown
+django-filter
