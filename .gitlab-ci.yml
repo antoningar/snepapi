@@ -8,8 +8,7 @@ jobtest:
     - ./init.sh
 
   script:
-    - which python
-    - pyhton --version
+    - source venv/bin/activate
     - python manage.py makemigrations
     - python manage.py migrate
     - python manage.py check
