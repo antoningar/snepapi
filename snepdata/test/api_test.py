@@ -1,6 +1,5 @@
 from django.test import TestCase
-from unittest import mock
-from rest_framework.test import APIRequestFactory, APIClient
+from rest_framework.test import APIClient
 
 import json
 
