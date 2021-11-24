@@ -19,4 +19,4 @@ fi
 source venv/bin/activate
 pip install -r requirements.txt
 echo "Python venv has been installed with requirements.txt"
-which python
+deactivate
