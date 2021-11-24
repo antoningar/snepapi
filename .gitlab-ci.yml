@@ -8,6 +8,8 @@ jobtest:
     - /home/ubuntu/snepapi/init.sh
 
   script:
+    - pwd
+    - ls -al
     - /home/ubuntu/snepapi/builds/0/project-0/venv/bin/python manage.py makemigrations
     - /home/ubuntu/snepapi/builds/0/project-0/venv/bin/python manage.py migrate
     - /home/ubuntu/snepapi/builds/0/project-0/venv/bin/python manage.py check
