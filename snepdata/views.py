@@ -19,9 +19,12 @@ class CertificationFilterViewSet(CertificationViewSet):
         category = self.request.query_params.get('category')
         certification = self.request.query_params.get('certification')
 
-        queryset = queryset.filter(artist__icontains=artist) if artist else None
-        queryset = queryset.filter(category__iexact=category) if category else None
-        queryset = queryset.filter(certification_type__iexact=certification) if certification else None
+        if artist:
+            queryset = queryset.filter(artist__icontains=artist)
+        if category:
+            queryset = queryset.filter(category__iexact=category)
+        if certification:
+            queryset = queryset.filter(certification_type__iexact=certification)
         
         return queryset
 
