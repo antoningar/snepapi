@@ -1,5 +1,5 @@
 from django.contrib import admin
-from snepdata.models import Certification
+from snepdata.models import Certification, Token
 
 
 class CertificationAdmin(admin.ModelAdmin):
@@ -10,3 +10,4 @@ class CertificationAdmin(admin.ModelAdmin):
         Model = Certification
 
 admin.site.register(Certification, CertificationAdmin)
+admin.site.register(Token)

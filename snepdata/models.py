@@ -1,5 +1,8 @@
 from django.db import models
 
+import os
+import binascii
+
 # Create your models here.
 
 CERTIFICATION_TYPES = (
@@ -26,3 +29,12 @@ class Certification(models.Model):
 
     def __str__(self):
         return f'{self.artist} | {self.title} | {self.certification_type} | {self.certification_date}'
+
+
+class Token(models.Model):
+    ip = models.CharField(max_length=15, primary_key=True)
+    token = models.CharField(max_length=20)
+
+    def save(self, *args, **kwargs):
+        self.token = binascii.hexlify(os.urandom(20)).decode()
+        return super().save(*args, **kwargs)
