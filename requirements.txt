@@ -5,3 +5,4 @@ mock
 djangorestframework
 markdown
 django-filter
+gunicorn
