@@ -43,6 +43,3 @@ class GetTokenView(APIView):
         return Response({
             'token': token.token
         })
-
-    def post(self, request, *args, **kwargs):
-        print(request.data)
