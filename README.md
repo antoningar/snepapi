@@ -18,4 +18,4 @@ Routes | Description
 ------------ | -------------
 `GET /token` | Récupération d'un token (valable indéfiniment)
 `GET /certifications` | Récupération de toutes les certifications (suivre l'attribut next de la reponse pour naviguer 100 par 100)
-`GET /certifications/search?{filter}={data}` | Recherche via filtre, remplacer {filter} par "artist", "category" ou "certification" et {data} par le filtre voulut
+`GET /certifications/search?{filter}={data}` | Recherche via filtre, remplacer {filter} par "artist", "category" ou "certifications" et {data} par le filtre voulut
