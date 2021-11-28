@@ -1,3 +1,5 @@
+import hashlib
+
 from rest_framework.viewsets import ReadOnlyModelViewSet
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -31,7 +33,8 @@ class CertificationFilterViewSet(CertificationViewSet):
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     ip = x_forwarded_for.split(',')[0] if x_forwarded_for else request.META.get('REMOTE_ADDR')
-    return ip
+
+    return hashlib.sha256(bytes(ip, encoding='utf-8')).hexdigest()
 
 class GetTokenView(APIView):
     def get(self, request):
