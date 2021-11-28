@@ -1,10 +1,10 @@
 # SNEPAPI
 Une api non officiel de la snep qui vous permet d'acceder à toutes les certifications decernées par la snep.  
-Vous pouvez toutes les consulter (100 par requêtes) ou les filtrer via artistes, categories (album ou single) ou certifiactions (or, platine...).  
+Vous pouvez toutes les consulter (100 par requêtes) ou les filtrer via artiste, categorie (album ou single) ou certifiaction (or, platine...).  
 
 ## Utilisation
 Dans un premier temps il vous faudra récupérer un token.  
-Ensuite, il vous faudra ajouter dans chacune de vos requête votre token dans le header :  
+Ensuite, il vous faudra ajouter dans chacune de vos requêtes votre token dans le header :  
 ```json
 "Authorization": "Bearer <your_token>"
 ```
